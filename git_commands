@@ -1,0 +1,11 @@
+git init (inside the directory run it to make it a repo use it wisely)
+git add  (add the file to staging)
+git rm -cached (to unstage)
+git commit (to commint the file)
+git status (to check status)
+git log (to see how many commits have been done so far)
+man git (to see all git commands)
+git rm (to delete file from git not from local)
+git restore (restore the deleted file)
+git config --global user.name "Your Name"
+git config --global user.email "Your email"

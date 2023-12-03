@@ -1,7 +1,7 @@
 git init (inside the directory run it to make it a repo use it wisely)
 git add  (add the file to staging)
 git rm -cached (to unstage)
-git commit (to commint the file)
+git commit -m "message" nameoffile (to commint the file)
 git status (to check status)
 git log (to see how many commits have been done so far)
 man git (to see all git commands)
@@ -12,3 +12,36 @@ git config --global user.email "Your email"
 git checkout -b ajay (it will create new branch and switch to the new branch)
 git checkout Name_of_branch  (to switch to new branch)
 git log --oneline
+git merge dev (head will point to master and dev both if we run git log --oneline but if it is not merged it will point to dev branch if the change is done in dev and if change is in master it will point master)
+git remote add origin ..linkof repo
+git remote -v
+git fetch (all branches will be fetched)
+git branch (list branch)
+git pull (only a single branch is pulled)
+
+
+     #to connect using ssh
+generate personal token through setting >developer setting>
+git remote -v   =>copy url
+git remote set-url origin https:// ----paste the token generated not url +@url starting from github copied in step 25 paste it
+git push origin master
+git pull origin master (will pull only master)
+git fetch (will pull every branch)
+
+
+
+git rebase (merge will not show commits of dev branch to master but rebase will)
+
+see this image  - https://miro.medium.com/v2/resize:fit:1400/1*pFWenykuQ0rwXkbAx5nD_A.png
+
+
+
+
+
+
+
+
+
+
+
+

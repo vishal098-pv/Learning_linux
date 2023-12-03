@@ -9,3 +9,6 @@ git rm (to delete file from git not from local)
 git restore (restore the deleted file)
 git config --global user.name "Your Name"
 git config --global user.email "Your email"
+git checkout -b ajay (it will create new branch and switch to the new branch)
+git checkout Name_of_branch  (to switch to new branch)
+git log --oneline

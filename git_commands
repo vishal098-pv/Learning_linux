@@ -34,6 +34,31 @@ git rebase (merge will not show commits of dev branch to master but rebase will)
 
 see this image  - https://miro.medium.com/v2/resize:fit:1400/1*pFWenykuQ0rwXkbAx5nD_A.png
 
+git revert __id of commit (git log --oneline for id)
+# important
+git reset --soft id ( below the commit you want to remove everything will be removed and no one can now what you did but the files will be present in woking tree so this is the basic difference between revert and reset
+
+git reset --hard id (files from tree will also be removed 
+conclusion every thing will be removed from the id data till id will remain only
+#####now to restore that file from staged to unstaged 
+git restore --staged keys.txt (git advance train with shubham 2:46:17)
+vim .gitignore (put anme of file you want to ignore in this file and they will be removed from git but not from local)
+git add .(search and then use )
+
+git show commit __id
+
+# advance topic cherrypick
+git cherrypick __id of commit (it will add a change from dev branch to main branch not whole code only one commit that we want)
+
+#stash if im working on feature in devbranch and suddenly want to switch to other branch but it will re move my changes so i will stast it
+git stash (in that branch)
+git stash pop (get your changes)
+
+# pull /push / fetch
+
+
+git clean
+
 
 
 

@@ -1,0 +1,19 @@
+push & pull
+  volume 
+  2 or more comtainer (network)  multitier app
+  docker compose (yml )
+  multi stage docker build
+  docker login 
+  docker tag java-app:latest trainwithajay/java-app:latest (for pushing image)
+    now new image is created 
+    docker push  trainwithajay/java-app:latest
+
+
+      basic commands
+  docker kill --id of container (to kill running container)
+  docker system prune (to remove all stopped containers ,all networks not used by atleast one container ,all dangaling images,all dangaling build cache)
+  docker rmi ---id of container  all ids one by one and run 
+to pull from docker hub
+ docker run trainwithajay/java-app:latest
+   docker ps -a (to see all killed containers)
+    

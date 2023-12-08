@@ -1,0 +1,27 @@
+docker is product which uses  docker engine
+virtulization
+light weight
+reusability
+
+learn about hypervisor -it is a layer on os it treats os as a host
+
+solution docker engine
+docker engine  1 docker d (deamon) and inside docker d there is a process running call container d it is a opensource tool of cncf it is a tool helps us to create containers and run our application
+               2 docker cli
+it is lightweight because it doesnt use its own kernel  the container has os but it  doesnt use its own kenel
+sudo apt install docker.io
+sudo apt purge docker.io
+systemctl status docker  
+sudo docker ps (but dont use sudo every time for that do -> sudo cat/etc/group   then add your user ununtu or what evern in docker group run command -> sudo usermod -aG docker ubuntu  then sudo reboot)
+
+
+file ->image ->container
+image has everything that we need to run an application
+docker ps 
+docker pull mysql  (we are pulling it from dockerhub)
+docker images
+docker run mysql:latest
+now it will require password so we will use another command to set the environment variable
+docker run -e MYSQL_ROOT_PASSWORD= test@123 mysql:latest
+docker kill _container_id(to kill the container)
+docker run -d -e MYSQL_ROOT_PASSWORD= test@123 mysql:latest (to run in background)

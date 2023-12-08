@@ -1,0 +1,17 @@
+#get the base image
+FROM openjdk:11
+#creating a working directory to keep all files
+WORKDIR /app
+#code copy to image for running in container
+COPY hello.java/app
+#compile the code
+RUN javac hello.java
+#actually passing the commands as argument 
+CMD ["java","hello"]
+
+save the file then out side the file file is created now to create image run below command
+run command 
+docker build -t java-app:latest .(this ending dot is to run the file here)
+then
+docker images
+docker run java-app:latest

@@ -5,6 +5,7 @@ and then we will createanother folder by name of the app of whose data we want t
 pate this path to the real app commandline
 then we have to name the volume 
   docker volume create --name django-todo-volume --opt type=none --opt device = ---same path the we copied  that goes to the volume dir  --opt o=bind 
+use this command (docker volume create --name django-todo-volume --opt type=none --opt device=/home/ubuntu/volumes/node-todo-cicd --opt o=bind) video 2 (1:00:00)
 docker run  -d -p 8000:8000 --mount source=django-todo-volume,target=/data django-todo-app:latest
 
   #container communication    deploy 2-tier flast app

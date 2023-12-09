@@ -1,0 +1,46 @@
+in ubuntu ec2 user we create another directory for volumes 
+  mkdir volumes 
+and then we will createanother folder by name of the app of whose data we want to save
+  pwd (to copy the path of app folder insite the volumes directory)
+pate this path to the real app commandline
+then we have to name the volume 
+  docker volume create --name django-todo-volume --opt type=none --opt device = ---same path the we copied  that goes to the volume dir  --opt o=bind 
+docker run  -d -p 8000:8000 --mount source=django-todo-volume,target=/data django-todo-app:latest
+
+  #container communication    deploy 2-tier flast app
+  we have a a container that is running a app and other container thats running mysql db
+  docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=test@123 -e MYSQL_DATABASE=testdb -r MYSQL_USER =admin -e MYSQL_PASSWORD=admin mysql:latest
+  #command to go inside a docker container and open bash
+  docker exec -it --container id-- bash
+  {inside bash
+    mysql -u root -p
+    
+    
+  }
+  # mysql is running in a separate container and we have to run the flask app in another container
+  docker run -d -p 5000:5000 flask-app:latest
+  set inbound rules in ec2 goto ip of ec2 and /port of your app it will give error cant communicate to mysqldb
+    # creating network 
+  # to name container we can do it by --name while running the docker file
+    example- docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=test@123 -e MYSQL_DATABASE=testdb -r MYSQL_USER =admin -e MYSQL_PASSWORD=admin --name mysql mysql:latest
+
+ # create bridge between two containers
+
+    docekr network create -d bridge two-tier-app-nw
+    docker network ls
+    docker system prune (if the containers are running)
+    docker ps -a(to see all containers running dead also ig)
+    docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=test@123 -e MYSQL_DATABASE=testdb -r MYSQL_USER =admin -e MYSQL_PASSWORD=admin --name mysql --network two-tier-app-nw mysql:latest
+      #how we have one container in network 
+    docker network ls
+    docker inspect two-tier-app-nw
+    docker run -d -p 5000:5000 -e MYSQL_HOST=mysql -e MYSQL_USER=admin -e MYSQL_PASSWORD=admin -e MYSQL_DB=testdb --name  flask-app --network two-tier-app-nw flask-app:latest
+    #there will be error that there is no table 
+    docker ps
+    docker exec -it __id of container__ bash
+    {
+      mysql -u root -p
+        then create table which is missing given in tws github project
+    }
+
+    

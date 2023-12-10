@@ -52,3 +52,6 @@ pipeline{
        
           }
 }
+
+
+learn about vps how jenkins server assigns jobs to different servers or slave servers like prd ,uat,dev servers 

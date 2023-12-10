@@ -2,4 +2,53 @@ unit test   - testing every single component
 integration test - testing after integrating all the components
 jenkins port 8080 (enable it in ec2)
 docker-compose down && docker-compose up
-1:46
+webhooks
+jenkis url/github-webhook/
+
+
+#video 2
+1 => pipeline => code -> build -> test ->deploy
+github -> build and test -> push image on docker hub ->deploy on server
+Agents
+2 =>master (server of jenkins) it gives jobs to agent servers or slaves 
+prd            dev            uat(user acceptance testing)
+3 => plugins
+     for adding more functionality
+
+groovy _. special syntax for scripting
+# we will create stages 
+# we can use trivy for image scan
+pipeline{
+      stages{
+          stage("code"){
+              steps{
+              git url:____________________ ,branch: "master"
+               echo "code is cloned"
+              }
+                       }
+         stage("build & test"){
+              steps{
+                 sh "docker build -t node-todo-cicd . "
+                 echo "code is build"
+              }
+                       }
+ 
+         stage("push"){
+              steps{
+                    withCredentials([usernamePassword(credentialsId:"dockerHub",passwordVariable:"dockerHubPass",usernameVariable:"dockerHubUser")]){
+                        sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}"
+                        sh "docker tag node-todo-cicd:latest pas ${env.dockerHUbUser}/node-todo-cicd:latest"
+                        sh "docker push ${env.dockerHUbUser}/node-todo-cicd:latest"
+                        echo "image push ho gya"
+                       }
+                     }
+                       }
+         stage("deploy"){
+              steps{
+                  sh "docker-compose down && docker-compose up -d"
+                  echo "deployment ho gayi"
+              }
+                       }
+       
+          }
+}

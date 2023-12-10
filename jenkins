@@ -55,4 +55,39 @@ pipeline{
 
 
 learn about vps how jenkins server assigns jobs to different servers or slave servers like prd ,uat,dev servers 
-# important on master server jenkins should be installed but on slaves not
+# important on master server jenkins should be installed but on slaves not but jenkins runs on java so java should be installed on slaves also and docker and docker compose should be installed on slaves
+# connect both master serven and agent so generate key in master server by running following command 
+ssh keygen => then enter enter enter
+now we have rsa and pub keys pub for agent rsa for master
+cat id_rsa.pub (now copy the key)
+# loginto agent server in another terminal run below commands
+cd .ssh
+sudo vim authurizedkeys
+paste the key here (i dont know delete the previous one or not so copy it for backup)
+then go to master 
+cd .ssh
+then copy ip of agent 
+ssh ubuntu@ __ip__of__agent__
+now intall java in agent server from jenkins website
+then connect master jenkins to agent but dont install jenkins on agent
+got to jenkins in master node run it and in manage settings add new node name it dev_server or anything you want
+now create mkdir jenkins workspace 
+ls
+cd j
+then pwd
+copy the path
+paste in the jenkins setting you are doing
+set label =
+dev-server
+now copy agents public address and paste
+now create dev credentials (ssh)
+paste private key from master server that we generated to here and name whatever you want i write ubuntu
+then select non verifing verification strategy
+enter
+now goto dev server and click on launch agent
+################################################################################error error error ###########################rsa dont work int his situation
+goto master 
+ssh-keygen -t ed25519
+paste as above do same
+now give permission to agent and also install docker and compose
+sudo usermod -aG docker ubuntu

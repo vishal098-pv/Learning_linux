@@ -10,7 +10,7 @@ lets suppose we want to create a demo.txt file so file is the resource and what 
 and there are providers in terraform which gives us what we need so we will use one of them which is Local (local provider is basically used to create local resources like files folders etc.).and we want to create a file so we will write Local-file
 basically it is called type of resource  now there should be name of the resource so we will write my_file
 =>       [resource_type] [resource_name] 
-resource local-file       my_file{
+resource "local-file"       "my_file"{
      #now file name   
     filename = ajay.txt
     #now if we want to put content inside this file use content
@@ -42,5 +42,21 @@ now we need providers but there is a problem what if we need more than one provi
 
 #now save and write commands to re initialize the terraform every time we have to do it whenever we make changes in terraform.tf file
 => terraform init
+#now to create a docker container we need image and then we have to run it so do the below steps
 =>
- 
+resource "docker_image" "my_nginx_image"{
+         name= "nginx:latest"
+     keep_locally= false
+}
+
+resource "docker_container" "my_nginx_container"{
+          image=docker_image.my_nginx_image.name
+          name="nginx_automated"  #this is the name of container
+          ports{
+           internal=80
+           external=80
+          }
+}
+=>commands
+=> terraform plan
+=>terraform apply

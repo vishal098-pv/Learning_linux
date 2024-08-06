@@ -1,1 +1,46 @@
+install terraform from online docs
+create file name main.tf (name it what you want)
 
+
+<block> <parameter> {
+
+arguments
+}
+lets suppose we want to create a demo.txt file so file is the resource and what we ant to create we put it in the block in our case we will put file(resource)
+and there are providers in terraform which gives us what we need so we will use one of them which is Local (local provider is basically used to create local resources like files folders etc.).and we want to create a file so we will write Local-file
+basically it is called type of resource  now there should be name of the resource so we will write my_file
+=>       [resource_type] [resource_name] 
+resource local-file       my_file{
+     #now file name   
+    filename = ajay.txt
+    #now if we want to put content inside this file use content
+    content = "hello this is ajay"
+}
+
+now to initialize this file save it and then run bellow command
+=> terraform init
+# now to see what my terraform file (main.tf) will do how it will plan things to create what we need to see that use this command
+=> terraform plan
+# if everything is correct use below command
+=> terraform apply
+# now if you do ls you will see a local file ajay.txt
+# now to use docker provider first install docker in your instance and give it necessary permissions  
+now we need providers but there is a problem what if we need more than one provider are we going to create a new file every time NO so to update these terraform related configurations we will create 
+=> terraform.tf file to list all the providers and other config settings to update the terraform
+=> create terraform.tf file
+ # it doesnt need arguments
+=> terraform {
+   required_providers{
+                          docker = {
+                          source = "cybershard/docker"
+                          version = "1.0.0"
+                                   }
+                     }
+
+
+            }
+
+#now save and write commands to re initialize the terraform every time we have to do it whenever we make changes in terraform.tf file
+=> terraform init
+=>
+ 

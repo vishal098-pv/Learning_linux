@@ -60,3 +60,32 @@ resource "docker_container" "my_nginx_container"{
 =>commands
 => terraform plan
 =>terraform apply
+
+#important
+
+#now to create resources like ec2 rds and other we need tto configure our current instance with aws credentials do below steps
+=>install aws cli v2 search on google and install it dont directly install by running sudo apt-get install awscli
+=>create user in IAM in aws account with administrator access (only for learning)
+=> now after successfully installing write below command
+=> aws configure 
+#and paste all access keys
+# now create infra.tf file
+and write below code to create s3 bucket
+
+resource "aws_s23_bucket" "my_bucket"{
+     bucket=learning-aws-bucket
+}
+save and run but also check if you have configured aws provider with region(important) or not in providers.tf
+=>terraform plan
+=>terraform apply
+now to create ec2 instance
+
+resource "aws_instance" "my_instance"{
+         ami= #copy from aws account from any instace there will be ami id mentioned
+         instance_type=t2.micro
+         tags={
+          Name="terra-auto-instace"
+         }
+}
+=> terraform plan and then terraform apply
+

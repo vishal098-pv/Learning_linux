@@ -1,4 +1,5 @@
 git init (inside the directory run it to make it a repo use it wisely)
+rm -rf .git (removing the Git version control from the directory)
 git add  (add the file to staging)
 git rm -cached (to unstage)
 git commit -m "message" nameoffile (to commint the file)
